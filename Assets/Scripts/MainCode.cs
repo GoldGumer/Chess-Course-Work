@@ -15,6 +15,12 @@ public class MainCode : MonoBehaviour
     private int Bottom = -4;
     private int Right = 3;
     private int Left = -4;
+    private bool[] CastlingOptions = {false, false, false, false};
+    private int[] EnPassantSquare = new int[2];
+    private IDictionary<char, int> BoardToInt = new IDictionary<char, int>() 
+    {
+        {'a',0},{'b',1},{'c',2},{'d',3},{'e',4},{'f',5},{'g',6},{'h',7}
+    };
     private string PlayerToMove;
     private double MoveCount = 0;
     public Tilemap ChessPiecesTilemap;
@@ -314,7 +320,7 @@ public class MainCode : MonoBehaviour
                 }
                 else
                 {
-                    switch(BoardNotation[Values[0]])
+                    switch(BoardNotation[Values[0]+1])
                     {
                         case 'w':
                             PlayerToMove = "White";
@@ -325,7 +331,39 @@ public class MainCode : MonoBehaviour
                         default:
                             break;
                     }
-                    Values[0]++;
+                    for(int i = 3; i <=6; i++)
+                    {
+                        char Letter = '';
+                        switch(i)
+                        {
+                            case 3:
+                                Letter = K;
+                                break;
+                            case 4:
+                                Letter = Q;
+                                break;
+                            case 5:
+                                Letter = k;
+                                break;
+                            case 6:
+                                Letter = q;
+                                break;
+                            default:
+                                break;
+                        }
+                        if(BoardNotation[Values[0]+i] == Letter)
+                        {
+                            CastlingOptions[i-3] = true;
+                        }
+                    }
+                    if(BoardNotation[Values[0]+7] != '-')
+                    {
+                        
+                    }
+                    else 
+                    {
+                        
+                    }
                 }
             }
             else
