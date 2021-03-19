@@ -23,6 +23,7 @@ public class MainCode : MonoBehaviour
     };
     private string PlayerToMove;
     private double MoveCount = 0;
+    private int DrawMoveCount = 0;
     public Tilemap ChessPiecesTilemap;
     public Tilemap ShowMovesTilemap;
     public Tilemap ChessBoardTilemap;
@@ -232,12 +233,10 @@ public class MainCode : MonoBehaviour
         int[] Position;
         while (!IsBoardSetup)
         {
-            if (Values[0] < BoardNotation.Length)
+            if (Values[2] >= Bottom && Values[3] <= Right+1)
             {
-                if (Values[2] >= Bottom && Values[3] <= Right+1)
+                switch (BoardNotation[Values[0]])
                 {
-                    switch (BoardNotation[Values[0]])
-                    {
                         case 'P':
                             Position = new int[2] { Values[3], Values[2] };
                             AllPieces[Values[1]] = new Pawn(ChessPiecesTilemap, "White", Position, W_Pawn);
@@ -264,110 +263,111 @@ public class MainCode : MonoBehaviour
                             Values = Counter(Values);
                             break;
                         case 'Q':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Queen(ChessPiecesTilemap, "White", Position, W_Queen);
-                            Values = Counter(Values);
-                            break;
-                        case 'p':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Pawn(ChessPiecesTilemap, "Black", Position, B_Pawn);
-                            Values = Counter(Values);
-                            break;
-                        case 'r':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Rook(ChessPiecesTilemap, "Black", Position, B_Rook);
-                            Values = Counter(Values);
-                            break;
-                        case 'b':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Bishop(ChessPiecesTilemap, "Black", Position, B_Bishop);
-                            Values = Counter(Values);
-                            break;
-                        case 'n':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Knight(ChessPiecesTilemap, "Black", Position, B_Knight);
-                            Values = Counter(Values);
-                            break;
-                        case 'k':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new King(ChessPiecesTilemap, "Black", Position, B_King);
-                            Values = Counter(Values);
-                            break;
-                        case 'q':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Queen(ChessPiecesTilemap, "Black", Position, B_Queen);
-                            Values = Counter(Values);
-                            break;
-                        case '/':
-                            Values[0]++;
-                            Values[2]--;
-                            Values[3] = Left;
-                            break;
-                        default:
-                            if (char.IsNumber(BoardNotation, Values[0]))
-                            {
-                                Values[3] = Values[3] + int.Parse(BoardNotation[Values[0]].ToString());
-                                Values[0]++;
-                            }
-                            else
-                            {
-                                Values[1]++;
-                                Values[0]++;
-                                Values[3]++;
-                            }
-                            break;
-                    }
-                }
-                else
-                {
-                    switch(BoardNotation[Values[0]+1])
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Queen(ChessPiecesTilemap, "White", Position, W_Queen);
+                    Values = Counter(Values);
+                    break;
+                case 'p':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Pawn(ChessPiecesTilemap, "Black", Position, B_Pawn);
+                    Values = Counter(Values);
+                    break;
+                case 'r':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Rook(ChessPiecesTilemap, "Black", Position, B_Rook);
+                    Values = Counter(Values);
+                    break;
+                case 'b':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Bishop(ChessPiecesTilemap, "Black", Position, B_Bishop);
+                    Values = Counter(Values);
+                    break;
+                case 'n':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Knight(ChessPiecesTilemap, "Black", Position, B_Knight);
+                    Values = Counter(Values);
+                    break;
+                case 'k':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new King(ChessPiecesTilemap, "Black", Position, B_King);
+                    Values = Counter(Values);
+                    break;
+                case 'q':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Queen(ChessPiecesTilemap, "Black", Position, B_Queen);
+                    Values = Counter(Values);
+                    break;
+                case '/':
+                    Values[0]++;
+                    Values[2]--;
+                    Values[3] = Left;
+                    break;
+                default:
+                    if (char.IsNumber(BoardNotation, Values[0]))
                     {
-                        case 'w':
-                            PlayerToMove = "White";
-                            break;
-                        case 'b':
-                            PlayerToMove = "Black";
-                            break;
-                        default:
-                            break;
+                        Values[3] = Values[3] + int.Parse(BoardNotation[Values[0]].ToString());
+                        Values[0]++;
                     }
-                    for(int i = 3; i <=6; i++)
+                    else
                     {
-                        char Letter = '';
-                        switch(i)
-                        {
-                            case 3:
-                                Letter = K;
-                                break;
-                            case 4:
-                                Letter = Q;
-                                break;
-                            case 5:
-                                Letter = k;
-                                break;
-                            case 6:
-                                Letter = q;
-                                break;
-                            default:
-                                break;
-                        }
-                        if(BoardNotation[Values[0]+i] == Letter)
-                        {
-                            CastlingOptions[i-3] = true;
-                        }
+                        Values[1]++;
+                        Values[0]++;
+                        Values[3]++;
                     }
-                    if(BoardNotation[Values[0]+7] != '-')
-                    {
-                        
-                    }
-                    else 
-                    {
-                        
-                    }
+                    break;
                 }
             }
             else
             {
+                switch(BoardNotation[Values[0]+1])
+                {
+                    case 'w':
+                        PlayerToMove = "White";
+                        break;
+                    case 'b':
+                        PlayerToMove = "Black";
+                        MoveCount += 0.5
+                        break;
+                    default:
+                        break;
+                }
+                for(int i = 3; i <=6; i++)
+                {
+                        char Letter = '';
+                    switch(i)
+                    {
+                        case 3:
+                            Letter = K;
+                            break;
+                        case 4:
+                            Letter = Q;
+                            break;
+                        case 5:
+                            Letter = k;
+                            break;
+                        case 6:
+                            Letter = q;
+                            break;
+                        default:
+                            break;
+                    }
+                    if(BoardNotation[Values[0]+i] == Letter)
+                    {
+                        CastlingOptions[i-3] = true;
+                    }
+                }
+                if(BoardNotation[Values[0]+7] != '-')
+                {
+                    EnPassantSquare[0] = Left + BoardToInt[BoardNotion[Values[0]+7]];
+                    EnPassantSquare[1] = Bottom + BoardNotation[Values[0]+8];
+                    DrawMoveCount += BoardNotation[Values[0]+10];
+                    MoveCount += BoardNotation[Values[0]+12];
+                }
+                else
+                {
+                    DrawMoveCount += BoardNotation[Values[0]+9];
+                    MoveCount += BoardNotation[Values[0]+11];
+                }
                 IsBoardSetup = true;
             }
         }
