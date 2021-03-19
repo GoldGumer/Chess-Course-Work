@@ -237,32 +237,32 @@ public class MainCode : MonoBehaviour
             {
                 switch (BoardNotation[Values[0]])
                 {
-                        case 'P':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Pawn(ChessPiecesTilemap, "White", Position, W_Pawn);
-                            Values = Counter(Values);
-                            break;
-                        case 'R':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Rook(ChessPiecesTilemap, "White", Position, W_Rook);
-                            Values = Counter(Values);
-                            break;
-                        case 'B':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Bishop(ChessPiecesTilemap, "White", Position, W_Bishop);
-                            Values = Counter(Values);
-                            break;
-                        case 'N':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new Knight(ChessPiecesTilemap, "White", Position, W_Knight);
-                            Values = Counter(Values);
-                            break;
-                        case 'K':
-                            Position = new int[2] { Values[3], Values[2] };
-                            AllPieces[Values[1]] = new King(ChessPiecesTilemap, "White", Position, W_King);
-                            Values = Counter(Values);
-                            break;
-                        case 'Q':
+                case 'P':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Pawn(ChessPiecesTilemap, "White", Position, W_Pawn);
+                    Values = Counter(Values);
+                    break;
+                case 'R':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Rook(ChessPiecesTilemap, "White", Position, W_Rook);
+                    Values = Counter(Values);
+                    break;
+                case 'B':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Bishop(ChessPiecesTilemap, "White", Position, W_Bishop);
+                    Values = Counter(Values);
+                    break;
+                case 'N':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new Knight(ChessPiecesTilemap, "White", Position, W_Knight);
+                    Values = Counter(Values);
+                    break;
+                case 'K':
+                    Position = new int[2] { Values[3], Values[2] };
+                    AllPieces[Values[1]] = new King(ChessPiecesTilemap, "White", Position, W_King);
+                    Values = Counter(Values);
+                    break;
+                case 'Q':
                     Position = new int[2] { Values[3], Values[2] };
                     AllPieces[Values[1]] = new Queen(ChessPiecesTilemap, "White", Position, W_Queen);
                     Values = Counter(Values);
@@ -333,7 +333,7 @@ public class MainCode : MonoBehaviour
                 }
                 for(int i = 3; i <=6; i++)
                 {
-                        char Letter = '';
+                    char Letter = '';
                     switch(i)
                     {
                         case 3:
