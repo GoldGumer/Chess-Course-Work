@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Pawn : Pieces
 {
+    static public int[] EnPassantSquare = new int[2];
     public Pawn(Tilemap ChessPiecesTilemap, string GivenColour, int[] StartingPosition, TileBase GivenTile) : base(ChessPiecesTilemap, "Pawn", GivenColour, StartingPosition, GivenTile) { }
     public override void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove)
     {

@@ -5,14 +5,14 @@ using UnityEngine.Tilemaps;
 
 public abstract class Pieces
 {
-    protected string Type;
-    protected string Colour;
-    protected int[] Position;
-    protected TileBase Tile;
-    protected int Top = 3;
-    protected int Bottom = -4;
-    protected int Right = 3;
-    protected int Left = -4;
+    public string Type { get; }
+    public string Colour { get; }
+    public int[] Position { get; set; }
+    public TileBase Tile;
+    static public int Top;
+    static public int Bottom;
+    static public int Right;
+    static public int Left;
 
     protected Pieces(Tilemap ChessPiecesTilemap, string GivenType, string GivenColour, int[] StartingPosition, TileBase GivenTile)
     {
@@ -78,35 +78,35 @@ public abstract class Pieces
         return Output;
     }
 
-    //Returns the tile
-    public TileBase GetTile()
-    {
-        return this.Tile;
-    }
+    ////Returns the tile
+    //public TileBase GetTile()
+    //{
+    //    return this.Tile;
+    //}
 
-    //Returns the positions of the piece
-    public int[] GetPosition()
-    {
-        return this.Position;
-    }
+    ////Returns the positions of the piece
+    //public int[] GetPosition()
+    //{
+    //    return this.Position;
+    //}
 
-    //Changes the position
-    public void SetPosition(int[] NewPosition)
-    {
-        this.Position = NewPosition;
-    }
+    ////Changes the position
+    //public void SetPosition(int[] NewPosition)
+    //{
+    //    this.Position = NewPosition;
+    //}
 
-    //Returns piece type
-    public string GetPieceType()
-    {
-        return this.Type;
-    }
+    ////Returns piece type
+    //public string GetPieceType()
+    //{
+    //    return this.Type;
+    //}
 
-    //Returns Piece Colour
-    public string GetColour()
-    {
-        return this.Colour;
-    }
+    ////Returns Piece Colour
+    //public string GetColour()
+    //{
+    //    return this.Colour;
+    //}
 
     public abstract void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove);
 }

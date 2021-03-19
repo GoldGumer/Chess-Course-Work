@@ -10,13 +10,11 @@ public class MainCode : MonoBehaviour
     private Vector3Int cellPosLast;
     private string BoardNotation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     private Pieces[] AllPieces = new Pieces[64];
-    private int Top = 3;
-    private int Bottom = -4;
-    private int Right = 3;
-    private int Left = -4;
-    private bool[] CastlingOptions = {false, false, false, false};
-    private int[] EnPassantSquare = new int[2];
-    private IDictionary<char, int> BoardToInt = new IDictionary<char, int>() 
+    private int Top = 8;
+    private int Bottom = 1;
+    private int Right = 8;
+    private int Left = 1;
+    private Dictionary<char, int> BoardToInt = new Dictionary<char, int>() 
     {
         {'a',0},{'b',1},{'c',2},{'d',3},{'e',4},{'f',5},{'g',6},{'h',7}
     };
@@ -49,26 +47,26 @@ public class MainCode : MonoBehaviour
     // Code For changing a piece into another
     private void Promotion(Pieces PieceToPromote, int PositionInArr, string PieceToPromoteTo)
     {
-        switch (PieceToPromote.GetColour())
+        switch (PieceToPromote.Colour)
         {
             case "White":
                 switch (PieceToPromoteTo)
                 {
                     case "Rook":
-                        AllPieces[PositionInArr] = new Rook(ChessPiecesTilemap, "White", PieceToPromote.GetPosition(), W_Rook);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), W_Rook);
+                        AllPieces[PositionInArr] = new Rook(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Rook);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Rook);
                         break;
                     case "Bishop":
-                        AllPieces[PositionInArr] = new Bishop(ChessPiecesTilemap, "White", PieceToPromote.GetPosition(), W_Bishop);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), W_Bishop);
+                        AllPieces[PositionInArr] = new Bishop(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Bishop);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Bishop);
                         break;
                     case "Knight":
-                        AllPieces[PositionInArr] = new Knight(ChessPiecesTilemap, "White", PieceToPromote.GetPosition(), W_Knight);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), W_Knight);
+                        AllPieces[PositionInArr] = new Knight(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Knight);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Knight);
                         break;
                     case "Queen":
-                        AllPieces[PositionInArr] = new Queen(ChessPiecesTilemap, "White", PieceToPromote.GetPosition(), W_Queen);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), W_Queen);
+                        AllPieces[PositionInArr] = new Queen(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Queen);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Queen);
                         break;
                     default:
                         break;
@@ -78,20 +76,20 @@ public class MainCode : MonoBehaviour
                 switch (PieceToPromoteTo)
                 {
                     case "Rook":
-                        AllPieces[PositionInArr] = new Rook(ChessPiecesTilemap, "Black", PieceToPromote.GetPosition(), B_Rook);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), B_Rook);
+                        AllPieces[PositionInArr] = new Rook(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Rook);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Rook);
                         break;
                     case "Bishop":
-                        AllPieces[PositionInArr] = new Bishop(ChessPiecesTilemap, "Black", PieceToPromote.GetPosition(), B_Bishop);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), B_Bishop);
+                        AllPieces[PositionInArr] = new Bishop(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Bishop);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Bishop);
                         break;
                     case "Knight":
-                        AllPieces[PositionInArr] = new Knight(ChessPiecesTilemap, "Black", PieceToPromote.GetPosition(), B_Knight);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), B_Knight);
+                        AllPieces[PositionInArr] = new Knight(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Knight);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Knight);
                         break;
                     case "Queen":
-                        AllPieces[PositionInArr] = new Queen(ChessPiecesTilemap, "Black", PieceToPromote.GetPosition(), B_Queen);
-                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.GetPosition()[0], PieceToPromote.GetPosition()[1], 0), B_Queen);
+                        AllPieces[PositionInArr] = new Queen(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Queen);
+                        ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Queen);
                         break;
                     default:
                         break;
@@ -107,7 +105,7 @@ public class MainCode : MonoBehaviour
     {
         for(int i = 0; i < 64; i++)
         {
-            if (AllPieces[i] != null && AllPieces[i].GetPosition()[0] == PositionsToFind[0] && AllPieces[i].GetPosition()[1] == PositionsToFind[1])
+            if (AllPieces[i] != null && AllPieces[i].Position[0] == PositionsToFind[0] && AllPieces[i].Position[1] == PositionsToFind[1])
             {
                 return i;
             }
@@ -148,7 +146,7 @@ public class MainCode : MonoBehaviour
             AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })] = null;
             MoveCount = 0;
         }
-        if (movingPiece.GetPieceType() == "Pawn")
+        if (movingPiece.Type == "Pawn")
         {
             if (cellPosNew.y == Top || cellPosNew.y == Bottom)
             {
@@ -156,15 +154,15 @@ public class MainCode : MonoBehaviour
             }
             MoveCount = 0;
         }
-        AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].SetPosition(new int[2] { cellPosNew.x, cellPosNew.y });
+        AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].Position = new int[2] { cellPosNew.x, cellPosNew.y };
         movingPiece = null;
         ChessPiecesTilemap.SetTile(cellPosLast, null);
         switch(PlayerToMove)
         {
-            case 'White':
+            case "White":
                 PlayerToMove = "Black";
                 break;
-            case 'Black':
+            case "Black":
                 PlayerToMove = "White";
                 break;
             default:
@@ -325,40 +323,40 @@ public class MainCode : MonoBehaviour
                         break;
                     case 'b':
                         PlayerToMove = "Black";
-                        MoveCount += 0.5
+                        MoveCount += 0.5;
                         break;
                     default:
                         break;
                 }
                 for(int i = 3; i <=6; i++)
                 {
-                    char Letter = '';
+                    char Letter = ' ';
                     switch(i)
                     {
                         case 3:
-                            Letter = K;
+                            Letter = 'K';
                             break;
                         case 4:
-                            Letter = Q;
+                            Letter = 'Q';
                             break;
                         case 5:
-                            Letter = k;
+                            Letter = 'k';
                             break;
                         case 6:
-                            Letter = q;
+                            Letter = 'q';
                             break;
                         default:
                             break;
                     }
                     if(BoardNotation[Values[0]+i] == Letter)
                     {
-                        CastlingOptions[i-3] = true;
+                        King.CastlingOptions[i-3] = true;
                     }
                 }
                 if(BoardNotation[Values[0]+7] != '-')
                 {
-                    EnPassantSquare[0] = Left + BoardToInt[BoardNotion[Values[0]+7]];
-                    EnPassantSquare[1] = Bottom + BoardNotation[Values[0]+8];
+                    Pawn.EnPassantSquare[0] = Left + BoardToInt[BoardNotation[Values[0]+7]];
+                    Pawn.EnPassantSquare[1] = Bottom + BoardNotation[Values[0]+8];
                     DrawMoveCount += BoardNotation[Values[0]+10];
                     MoveCount += BoardNotation[Values[0]+12];
                 }
@@ -372,9 +370,19 @@ public class MainCode : MonoBehaviour
         }
     }
 
+    // Code that sets up pieces
+    private void SetParameters()
+    {
+        Pieces.Top = Top;
+        Pieces.Bottom = Bottom;
+        Pieces.Right = Right;
+        Pieces.Left = Left;
+    }
+
     // Code is ran once when the object is created
     private void Start()
     {
+        SetParameters();
         for (int i = 0; i < 64; i++)
         {
             AllPieces[i] = null;
@@ -392,7 +400,7 @@ public class MainCode : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && cellPosNew.x >= Left && cellPosNew.x <= Right && cellPosNew.y >= Bottom && cellPosNew.y <= Top)
         {
             // When no piece has been selected and a piece is clicked
-            if (ChessPiecesTilemap.GetTile(cellPosNew) != null && movingPiece == null && PlayerToMove == AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].GetColour())
+            if (ChessPiecesTilemap.GetTile(cellPosNew) != null && movingPiece == null && PlayerToMove == AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].Colour)
             {
                 NewPieceSelected();
             }
@@ -402,12 +410,12 @@ public class MainCode : MonoBehaviour
                 MoveAPiece(false);
             }
             // Checking if the piece is the same and saving that piece as the new piece
-            else if (ChessPiecesTilemap.GetTile(cellPosNew) != null  && PlayerToMove == AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].GetColour())
+            else if (ChessPiecesTilemap.GetTile(cellPosNew) != null  && PlayerToMove == AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].Colour)
             {
                 NewPieceSelected();
             }
             // Checking if the piece is the opponents piece and taking it
-            else if (ChessPiecesTilemap.GetTile(cellPosNew) != null && PlayerToMove != AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].GetColour() && ShowMovesTilemap.GetTile(cellPosNew) == ShowMove)
+            else if (ChessPiecesTilemap.GetTile(cellPosNew) != null && PlayerToMove != AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].Colour && ShowMovesTilemap.GetTile(cellPosNew) == ShowMove)
             {
                 MoveAPiece(true);
             }

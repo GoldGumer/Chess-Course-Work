@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class King : Pieces
 {
+    static public bool[] CastlingOptions = { false, false, false, false };
     public King(Tilemap ChessPiecesTilemap, string GivenColour, int[] StartingPosition, TileBase GivenTile) : base(ChessPiecesTilemap, "King", GivenColour, StartingPosition, GivenTile) { }
     public override void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove)
     {
