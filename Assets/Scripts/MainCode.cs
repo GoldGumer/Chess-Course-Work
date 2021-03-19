@@ -311,6 +311,15 @@ public class MainCode : MonoBehaviour
                 }
                 else
                 {
+                    switch(BoardNotation[Values[0]])
+                    {
+                        case 'w':
+                            PlayerToMove = "White";
+                            break;
+                        case 'b':
+                            PlayerToMove = "Black";
+                            break;
+                    }
                     Values[0]++;
                 }
             }
@@ -324,7 +333,6 @@ public class MainCode : MonoBehaviour
     // Code is ran once when the object is created
     private void Start()
     {
-        PlayerToMove = "White";
         for (int i = 0; i < 64; i++)
         {
             AllPieces[i] = null;
