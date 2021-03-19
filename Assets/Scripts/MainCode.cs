@@ -153,13 +153,16 @@ public class MainCode : MonoBehaviour
         AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].SetPosition(new int[2] { cellPosNew.x, cellPosNew.y });
         movingPiece = null;
         ChessPiecesTilemap.SetTile(cellPosLast, null);
-        if (PlayerToMove == "White")
+        switch(PlayerToMove)
         {
-            PlayerToMove = "Black";
-        }
-        else if(PlayerToMove == "Black")
-        {
-            PlayerToMove = "White";
+            case 'White':
+                PlayerToMove = "Black";
+                break;
+            case 'Black':
+                PlayerToMove = "White";
+                break;
+            default:
+                break;
         }
         MoveCount = MoveCount + 0.5;
     }
@@ -318,6 +321,8 @@ public class MainCode : MonoBehaviour
                             break;
                         case 'b':
                             PlayerToMove = "Black";
+                            break;
+                        default:
                             break;
                     }
                     Values[0]++;
