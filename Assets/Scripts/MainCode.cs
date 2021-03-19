@@ -10,7 +10,6 @@ public class MainCode : MonoBehaviour
     private Vector3Int cellPosLast;
     private string BoardNotation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     private Pieces[] AllPieces = new Pieces[64];
-    private TileBase Tile;
     private int Top = 3;
     private int Bottom = -4;
     private int Right = 3;
