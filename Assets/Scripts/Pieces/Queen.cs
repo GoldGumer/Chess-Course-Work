@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Queen : Pieces
 {
-    public Queen(Tilemap ChessPiecesTilemap, string GivenColour, int[] StartingPosition, TileBase GivenTile) : base(ChessPiecesTilemap, "Queen", GivenColour, StartingPosition, GivenTile) { }
-    public override void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove)
+    public Queen(string GivenColour, int[] StartingPosition, TileBase GivenTile) : base("Queen", GivenColour, StartingPosition, GivenTile) { }
+    public override void Move()
     {
         for (int j = 0; j <= 3; j++)
         {
@@ -43,18 +43,18 @@ public class Queen : Pieces
             {
                 int[] position = { i * positionMultipliers[0], i * positionMultipliers[1], i * positionMultipliers[2], i * positionMultipliers[3] };
                 //Straights
-                Checker = CheckIfBlocked(ChessPiecesTilemap, position[0], position[1]);
+                Checker = CheckIfBlocked(position[0], position[1]);
                 if (notBlockedStraight && !CheckCellPos(specificDirection[0], i))
                 {
                     notBlockedStraight = false;
                 }
                 else if (notBlockedStraight && Checker.Item1)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[0], position[1]);
+                    PlaceShowMoves(position[0], position[1]);
                 }
                 else if (notBlockedStraight && Checker.Item2)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[0], position[1]);
+                    PlaceShowMoves(position[0], position[1]);
                     notBlockedStraight = false;
                 }
                 else
@@ -62,18 +62,18 @@ public class Queen : Pieces
                     notBlockedStraight = false;
                 }
                 //Diagonals
-                Checker = CheckIfBlocked(ChessPiecesTilemap, position[2], position[3]);
+                Checker = CheckIfBlocked(position[2], position[3]);
                 if (notBlockedDiagonal && !(CheckCellPos(specificDirection[0], i) && CheckCellPos(specificDirection[1], i)))
                 {
                     notBlockedDiagonal = false;
                 }
                 else if (notBlockedDiagonal && Checker.Item1)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[2], position[3]);
+                    PlaceShowMoves(position[2], position[3]);
                 }
                 else if (notBlockedDiagonal && Checker.Item2)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[2], position[3]);
+                    PlaceShowMoves(position[2], position[3]);
                     notBlockedDiagonal = false;
                 }
                 else

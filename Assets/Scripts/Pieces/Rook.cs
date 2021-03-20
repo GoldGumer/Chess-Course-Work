@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Rook : Pieces
 {
-    public Rook(Tilemap ChessPiecesTilemap, string GivenColour, int[] StartingPosition, TileBase GivenTile) : base(ChessPiecesTilemap, "Rook", GivenColour, StartingPosition, GivenTile) { }
-    public override void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove)
+    public Rook(string GivenColour, int[] StartingPosition, TileBase GivenTile) : base("Rook", GivenColour, StartingPosition, GivenTile) { }
+    public override void Move()
     {
         // Logic of how a Rook can move
         (bool, bool) Checker;
@@ -36,18 +36,18 @@ public class Rook : Pieces
             for (int i = 1; i < 8; i++)
             {
                 int[] position = { i * posMultipliers[0], i * posMultipliers[1] };
-                Checker = CheckIfBlocked(ChessPiecesTilemap, position[0], position[1]);
+                Checker = CheckIfBlocked(position[0], position[1]);
                 if (notBlocked && !CheckCellPos(directions[j], i))
                 {
                     notBlocked = false;
                 }
                 else if (notBlocked && Checker.Item1)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[0], position[1]);
+                    PlaceShowMoves(position[0], position[1]);
                 }
                 else if (notBlocked && Checker.Item2)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[0], position[1]);
+                    PlaceShowMoves(position[0], position[1]);
                     notBlocked = false;
                 }
                 else

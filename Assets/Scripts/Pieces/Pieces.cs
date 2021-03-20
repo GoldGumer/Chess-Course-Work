@@ -9,12 +9,15 @@ public abstract class Pieces
     public string Colour { get; }
     public int[] Position { get; set; }
     public TileBase Tile;
+    static public Tilemap ChessPiecesTilemap;
+    static public Tilemap ShowMovesTilemap;
+    static public TileBase ShowMove;
     static public int Top;
     static public int Bottom;
     static public int Right;
     static public int Left;
 
-    protected Pieces(Tilemap ChessPiecesTilemap, string GivenType, string GivenColour, int[] StartingPosition, TileBase GivenTile)
+    protected Pieces(string GivenType, string GivenColour, int[] StartingPosition, TileBase GivenTile)
     {
         this.Type = GivenType;
         this.Colour = GivenColour;
@@ -25,7 +28,7 @@ public abstract class Pieces
     }
 
     //Code for Placing 'ShowMove' tiles
-    protected void PlaceShowMoves(Tilemap ShowMovesTilemap, TileBase ShowMove, int xPosition, int yPosition)
+    protected void PlaceShowMoves(int xPosition, int yPosition)
     {
         ShowMovesTilemap.SetTile(new Vector3Int(this.Position[0] + xPosition, this.Position[1] + yPosition, 0), ShowMove);
     }
@@ -61,7 +64,7 @@ public abstract class Pieces
     }
 
     //Code for checking if the piece is blocked
-    protected (bool, bool) CheckIfBlocked(Tilemap ChessPiecesTilemap, int xDirection, int yDirection)
+    protected (bool, bool) CheckIfBlocked(int xDirection, int yDirection)
     {
         (bool, bool) Output;
         Vector3Int testPiecePos = new Vector3Int(this.Position[0] + xDirection, this.Position[1] + yDirection, 0);
@@ -78,6 +81,7 @@ public abstract class Pieces
         return Output;
     }
 
+    public abstract void Move();
     ////Returns the tile
     //public TileBase GetTile()
     //{
@@ -107,6 +111,4 @@ public abstract class Pieces
     //{
     //    return this.Colour;
     //}
-
-    public abstract void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove);
 }

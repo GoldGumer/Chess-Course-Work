@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Bishop : Pieces
 {
-    public Bishop(Tilemap ChessPiecesTilemap, string GivenColour, int[] StartingPosition, TileBase GivenTile) : base(ChessPiecesTilemap, "Bishop", GivenColour, StartingPosition, GivenTile) { }
-    public override void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove)
+    public Bishop(string GivenColour, int[] StartingPosition, TileBase GivenTile) : base("Bishop", GivenColour, StartingPosition, GivenTile) { }
+    public override void Move()
     {
         // Logic of how a Bishop can move
         for (int j = 0; j <= 3; j++)
@@ -42,18 +42,18 @@ public class Bishop : Pieces
             for (int i = 1; i < 8; i++)
             {
                 int[] position = { i * positionMultipliers[0], i * positionMultipliers[1] };
-                Checker = CheckIfBlocked(ChessPiecesTilemap, position[0], position[1]);
+                Checker = CheckIfBlocked(position[0], position[1]);
                 if (notBlocked && !(CheckCellPos(specificDirection[0], i) && CheckCellPos(specificDirection[1], i)))
                 {
                     notBlocked = false;
                 }
                 else if (notBlocked && Checker.Item1)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[0], position[1]);
+                    PlaceShowMoves(position[0], position[1]);
                 }
                 else if (notBlocked && Checker.Item2)
                 {
-                    PlaceShowMoves(ShowMovesTilemap, ShowMove, position[0], position[1]);
+                    PlaceShowMoves(position[0], position[1]);
                     notBlocked = false;
                 }
                 else

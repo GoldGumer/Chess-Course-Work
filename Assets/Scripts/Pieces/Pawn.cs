@@ -6,8 +6,8 @@ using UnityEngine.Tilemaps;
 public class Pawn : Pieces
 {
     static public int[] EnPassantSquare = new int[2];
-    public Pawn(Tilemap ChessPiecesTilemap, string GivenColour, int[] StartingPosition, TileBase GivenTile) : base(ChessPiecesTilemap, "Pawn", GivenColour, StartingPosition, GivenTile) { }
-    public override void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove)
+    public Pawn(string GivenColour, int[] StartingPosition, TileBase GivenTile) : base("Pawn", GivenColour, StartingPosition, GivenTile) { }
+    public override void Move()
     {
         // Logic for a pawn movement
         int Side;
@@ -27,25 +27,25 @@ public class Pawn : Pieces
                 Side = 0;
                 break;
         }
-        (bool, bool) Checker = CheckIfBlocked(ChessPiecesTilemap, 0, Side);
+        (bool, bool) Checker = CheckIfBlocked(0, Side);
         if(BoolCellPos[0] && Checker.Item1)
         {
-            PlaceShowMoves(ShowMovesTilemap, ShowMove, 0, Side);
-            Checker = CheckIfBlocked(ChessPiecesTilemap, 0, Side*2);
+            PlaceShowMoves(0, Side);
+            Checker = CheckIfBlocked(0, Side*2);
             if (BoolCellPos[1] && Checker.Item1 && this.Position[1] == (2.5*Side*-1-0.5))
             {
-                PlaceShowMoves(ShowMovesTilemap, ShowMove, 0, Side * 2);
+                PlaceShowMoves(0, Side * 2);
             }
         }
-        Checker = CheckIfBlocked(ChessPiecesTilemap, 1, Side);
+        Checker = CheckIfBlocked(1, Side);
         if(BoolCellPos[0] && Checker.Item2)
         {
-            PlaceShowMoves(ShowMovesTilemap, ShowMove, 1, Side);
+            PlaceShowMoves(1, Side);
         }
-        Checker = CheckIfBlocked(ChessPiecesTilemap, -1, Side);
+        Checker = CheckIfBlocked(-1, Side);
         if(BoolCellPos[0] && Checker.Item2)
         {
-            PlaceShowMoves(ShowMovesTilemap, ShowMove, -1, Side);
+            PlaceShowMoves(-1, Side);
         }
     }
 }

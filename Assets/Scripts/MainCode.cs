@@ -53,19 +53,19 @@ public class MainCode : MonoBehaviour
                 switch (PieceToPromoteTo)
                 {
                     case "Rook":
-                        AllPieces[PositionInArr] = new Rook(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Rook);
+                        AllPieces[PositionInArr] = new Rook("White", PieceToPromote.Position, W_Rook);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Rook);
                         break;
                     case "Bishop":
-                        AllPieces[PositionInArr] = new Bishop(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Bishop);
+                        AllPieces[PositionInArr] = new Bishop("White", PieceToPromote.Position, W_Bishop);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Bishop);
                         break;
                     case "Knight":
-                        AllPieces[PositionInArr] = new Knight(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Knight);
+                        AllPieces[PositionInArr] = new Knight("White", PieceToPromote.Position, W_Knight);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Knight);
                         break;
                     case "Queen":
-                        AllPieces[PositionInArr] = new Queen(ChessPiecesTilemap, "White", PieceToPromote.Position, W_Queen);
+                        AllPieces[PositionInArr] = new Queen("White", PieceToPromote.Position, W_Queen);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), W_Queen);
                         break;
                     default:
@@ -76,19 +76,19 @@ public class MainCode : MonoBehaviour
                 switch (PieceToPromoteTo)
                 {
                     case "Rook":
-                        AllPieces[PositionInArr] = new Rook(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Rook);
+                        AllPieces[PositionInArr] = new Rook("Black", PieceToPromote.Position, B_Rook);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Rook);
                         break;
                     case "Bishop":
-                        AllPieces[PositionInArr] = new Bishop(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Bishop);
+                        AllPieces[PositionInArr] = new Bishop("Black", PieceToPromote.Position, B_Bishop);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Bishop);
                         break;
                     case "Knight":
-                        AllPieces[PositionInArr] = new Knight(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Knight);
+                        AllPieces[PositionInArr] = new Knight("Black", PieceToPromote.Position, B_Knight);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Knight);
                         break;
                     case "Queen":
-                        AllPieces[PositionInArr] = new Queen(ChessPiecesTilemap, "Black", PieceToPromote.Position, B_Queen);
+                        AllPieces[PositionInArr] = new Queen("Black", PieceToPromote.Position, B_Queen);
                         ChessPiecesTilemap.SetTile(new Vector3Int(PieceToPromote.Position[0], PieceToPromote.Position[1], 0), B_Queen);
                         break;
                     default:
@@ -133,7 +133,7 @@ public class MainCode : MonoBehaviour
         RemoveShowMoves();
         movingPiece = AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })];
         cellPosLast = cellPosNew;
-        movingPiece.Move(ChessPiecesTilemap, ShowMovesTilemap, ShowMove);
+        movingPiece.Move();
     }
 
     // Code for taking the piece at the new cell position and replacing it with the last piece saved
@@ -153,6 +153,19 @@ public class MainCode : MonoBehaviour
                 Promotion(movingPiece, FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y }), "Queen");
             }
             MoveCount = 0;
+        }
+        else if (movingPiece.Type == "King")
+        {
+            if (movingPiece.Colour == "White")
+            {
+                King.CastlingOptions[0] = false;
+                King.CastlingOptions[1] = false;
+            }
+            else if (movingPiece.Colour == "Black")
+            {
+                King.CastlingOptions[2] = false;
+                King.CastlingOptions[3] = false;
+            }
         }
         AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].Position = new int[2] { cellPosNew.x, cellPosNew.y };
         movingPiece = null;
@@ -236,62 +249,62 @@ public class MainCode : MonoBehaviour
                 {
                 case 'P':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Pawn(ChessPiecesTilemap, "White", Position, W_Pawn);
+                    AllPieces[Values[1]] = new Pawn("White", Position, W_Pawn);
                     Values = Counter(Values);
                     break;
                 case 'R':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Rook(ChessPiecesTilemap, "White", Position, W_Rook);
+                    AllPieces[Values[1]] = new Rook("White", Position, W_Rook);
                     Values = Counter(Values);
                     break;
                 case 'B':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Bishop(ChessPiecesTilemap, "White", Position, W_Bishop);
+                    AllPieces[Values[1]] = new Bishop("White", Position, W_Bishop);
                     Values = Counter(Values);
                     break;
                 case 'N':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Knight(ChessPiecesTilemap, "White", Position, W_Knight);
+                    AllPieces[Values[1]] = new Knight("White", Position, W_Knight);
                     Values = Counter(Values);
                     break;
                 case 'K':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new King(ChessPiecesTilemap, "White", Position, W_King);
+                    AllPieces[Values[1]] = new King("White", Position, W_King);
                     Values = Counter(Values);
                     break;
                 case 'Q':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Queen(ChessPiecesTilemap, "White", Position, W_Queen);
+                    AllPieces[Values[1]] = new Queen("White", Position, W_Queen);
                     Values = Counter(Values);
                     break;
                 case 'p':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Pawn(ChessPiecesTilemap, "Black", Position, B_Pawn);
+                    AllPieces[Values[1]] = new Pawn("Black", Position, B_Pawn);
                     Values = Counter(Values);
                     break;
                 case 'r':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Rook(ChessPiecesTilemap, "Black", Position, B_Rook);
+                    AllPieces[Values[1]] = new Rook("Black", Position, B_Rook);
                     Values = Counter(Values);
                     break;
                 case 'b':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Bishop(ChessPiecesTilemap, "Black", Position, B_Bishop);
+                    AllPieces[Values[1]] = new Bishop("Black", Position, B_Bishop);
                     Values = Counter(Values);
                     break;
                 case 'n':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Knight(ChessPiecesTilemap, "Black", Position, B_Knight);
+                    AllPieces[Values[1]] = new Knight("Black", Position, B_Knight);
                     Values = Counter(Values);
                     break;
                 case 'k':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new King(ChessPiecesTilemap, "Black", Position, B_King);
+                    AllPieces[Values[1]] = new King("Black", Position, B_King);
                     Values = Counter(Values);
                     break;
                 case 'q':
                     Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Queen(ChessPiecesTilemap, "Black", Position, B_Queen);
+                    AllPieces[Values[1]] = new Queen("Black", Position, B_Queen);
                     Values = Counter(Values);
                     break;
                 case '/':
@@ -377,6 +390,9 @@ public class MainCode : MonoBehaviour
         Pieces.Bottom = Bottom;
         Pieces.Right = Right;
         Pieces.Left = Left;
+        Pieces.ChessPiecesTilemap = ChessPiecesTilemap;
+        Pieces.ShowMovesTilemap = ShowMovesTilemap;
+        Pieces.ShowMove = ShowMove;
     }
 
     // Code is ran once when the object is created

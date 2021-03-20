@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Knight : Pieces
 {
-    public Knight(Tilemap ChessPiecesTilemap, string GivenColour, int[] StartingPosition, TileBase GivenTile) : base(ChessPiecesTilemap, "Knight", GivenColour, StartingPosition, GivenTile) { }
-    public override void Move(Tilemap ChessPiecesTilemap, Tilemap ShowMovesTilemap, TileBase ShowMove)
+    public Knight(string GivenColour, int[] StartingPosition, TileBase GivenTile) : base("Knight", GivenColour, StartingPosition, GivenTile) { }
+    public override void Move()
     {
         // Logic for the Knight movements
         (bool, bool) Checker;
@@ -44,15 +44,15 @@ public class Knight : Pieces
                     specificDirection = new string[2] { "default", "default" };
                     break;
             }
-            Checker = CheckIfBlocked(ChessPiecesTilemap, posOne[0], posOne[1]);
+            Checker = CheckIfBlocked(posOne[0], posOne[1]);
             if (CheckCellPos(allDirection[i], 2) && CheckCellPos(specificDirection[0], 1) && (Checker.Item1 || Checker.Item2))
             {
-                PlaceShowMoves(ShowMovesTilemap, ShowMove, posOne[0], posOne[1]);
+                PlaceShowMoves(posOne[0], posOne[1]);
             }
-            Checker = CheckIfBlocked(ChessPiecesTilemap, posTwo[0], posTwo[1]);
+            Checker = CheckIfBlocked(posTwo[0], posTwo[1]);
             if (CheckCellPos(allDirection[i], 2) && CheckCellPos(specificDirection[1], 1) && (Checker.Item1 || Checker.Item2))
             {
-                PlaceShowMoves(ShowMovesTilemap, ShowMove, posTwo[0], posTwo[1]);
+                PlaceShowMoves(posTwo[0], posTwo[1]);
             }
         }
     }
