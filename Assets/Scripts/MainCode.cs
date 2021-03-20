@@ -167,6 +167,31 @@ public class MainCode : MonoBehaviour
                 King.CastlingOptions[3] = false;
             }
         }
+        else if (movingPiece.Type == "Rook")
+        {
+            if (movingPiece.Colour == "White")
+            {
+                if (movingPiece.Position[0] == Right)
+                {
+                    King.CastlingOptions[0] = false;
+                }
+                else if (movingPiece.Position[0] == Left)
+                {
+                    King.CastlingOptions[1] = false;
+                }
+            }
+            else if (movingPiece.Colour == "Black")
+            {
+                if (movingPiece.Position[0] == Right)
+                {
+                    King.CastlingOptions[2] = false;
+                }
+                else if (movingPiece.Position[0] == Left)
+                {
+                    King.CastlingOptions[3] = false;
+                }
+            }
+        }
         AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].Position = new int[2] { cellPosNew.x, cellPosNew.y };
         movingPiece = null;
         ChessPiecesTilemap.SetTile(cellPosLast, null);
