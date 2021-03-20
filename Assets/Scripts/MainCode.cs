@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -14,7 +13,7 @@ public class MainCode : MonoBehaviour
     private int Bottom = 1;
     private int Right = 8;
     private int Left = 1;
-    private Dictionary<char, int> BoardToInt = new Dictionary<char, int>() 
+    private Dictionary<char, int> BoardToInt = new Dictionary<char, int>()
     {
         {'a',0},{'b',1},{'c',2},{'d',3},{'e',4},{'f',5},{'g',6},{'h',7}
     };
@@ -103,7 +102,7 @@ public class MainCode : MonoBehaviour
     // Code that finds the piece position in the array that the player clicks on
     private int FindPosInArr(int[] PositionsToFind)
     {
-        for(int i = 0; i < 64; i++)
+        for (int i = 0; i < 64; i++)
         {
             if (AllPieces[i] != null && AllPieces[i].Position[0] == PositionsToFind[0] && AllPieces[i].Position[1] == PositionsToFind[1])
             {
@@ -146,15 +145,7 @@ public class MainCode : MonoBehaviour
             AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })] = null;
             MoveCount = 0;
         }
-        if (movingPiece.Type == "Pawn")
-        {
-            if (cellPosNew.y == Top || cellPosNew.y == Bottom)
-            {
-                Promotion(movingPiece, FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y }), "Queen");
-            }
-            MoveCount = 0;
-        }
-        else if (movingPiece.Type == "King")
+        if (movingPiece.Type == "King")
         {
             if (movingPiece.Colour == "White")
             {
@@ -193,9 +184,17 @@ public class MainCode : MonoBehaviour
             }
         }
         AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].Position = new int[2] { cellPosNew.x, cellPosNew.y };
+        if (movingPiece.Type == "Pawn")
+        {
+            if (movingPiece.Position[1] == Top || movingPiece.Position[1] == Bottom)
+            {
+                Promotion(movingPiece, FindPosInArr(new int[2] { movingPiece.Position[1], movingPiece.Position[1] }), "Queen");
+            }
+            MoveCount = 0;
+        }
         movingPiece = null;
         ChessPiecesTilemap.SetTile(cellPosLast, null);
-        switch(PlayerToMove)
+        switch (PlayerToMove)
         {
             case "White":
                 PlayerToMove = "Black";
@@ -237,7 +236,7 @@ public class MainCode : MonoBehaviour
         {
             for (int j = Left; j <= Right; j++)
             {
-                if ((j+i)%2 == 1 || (j+i)%2 == -1)
+                if ((j + i) % 2 == 1 || (j + i) % 2 == -1)
                 {
                     Vector3Int Position = new Vector3Int(j, i, 0);
                     ChessBoardTilemap.SetTile(Position, Dark);
@@ -268,93 +267,93 @@ public class MainCode : MonoBehaviour
         int[] Position;
         while (!IsBoardSetup)
         {
-            if (Values[2] >= Bottom && Values[3] <= Right+1)
+            if (Values[2] >= Bottom && Values[3] <= Right + 1)
             {
                 switch (BoardNotation[Values[0]])
                 {
-                case 'P':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Pawn("White", Position, W_Pawn);
-                    Values = Counter(Values);
-                    break;
-                case 'R':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Rook("White", Position, W_Rook);
-                    Values = Counter(Values);
-                    break;
-                case 'B':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Bishop("White", Position, W_Bishop);
-                    Values = Counter(Values);
-                    break;
-                case 'N':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Knight("White", Position, W_Knight);
-                    Values = Counter(Values);
-                    break;
-                case 'K':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new King("White", Position, W_King);
-                    Values = Counter(Values);
-                    break;
-                case 'Q':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Queen("White", Position, W_Queen);
-                    Values = Counter(Values);
-                    break;
-                case 'p':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Pawn("Black", Position, B_Pawn);
-                    Values = Counter(Values);
-                    break;
-                case 'r':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Rook("Black", Position, B_Rook);
-                    Values = Counter(Values);
-                    break;
-                case 'b':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Bishop("Black", Position, B_Bishop);
-                    Values = Counter(Values);
-                    break;
-                case 'n':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Knight("Black", Position, B_Knight);
-                    Values = Counter(Values);
-                    break;
-                case 'k':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new King("Black", Position, B_King);
-                    Values = Counter(Values);
-                    break;
-                case 'q':
-                    Position = new int[2] { Values[3], Values[2] };
-                    AllPieces[Values[1]] = new Queen("Black", Position, B_Queen);
-                    Values = Counter(Values);
-                    break;
-                case '/':
-                    Values[0]++;
-                    Values[2]--;
-                    Values[3] = Left;
-                    break;
-                default:
-                    if (char.IsNumber(BoardNotation, Values[0]))
-                    {
-                        Values[3] = Values[3] + int.Parse(BoardNotation[Values[0]].ToString());
+                    case 'P':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Pawn("White", Position, W_Pawn);
+                        Values = Counter(Values);
+                        break;
+                    case 'R':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Rook("White", Position, W_Rook);
+                        Values = Counter(Values);
+                        break;
+                    case 'B':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Bishop("White", Position, W_Bishop);
+                        Values = Counter(Values);
+                        break;
+                    case 'N':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Knight("White", Position, W_Knight);
+                        Values = Counter(Values);
+                        break;
+                    case 'K':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new King("White", Position, W_King);
+                        Values = Counter(Values);
+                        break;
+                    case 'Q':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Queen("White", Position, W_Queen);
+                        Values = Counter(Values);
+                        break;
+                    case 'p':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Pawn("Black", Position, B_Pawn);
+                        Values = Counter(Values);
+                        break;
+                    case 'r':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Rook("Black", Position, B_Rook);
+                        Values = Counter(Values);
+                        break;
+                    case 'b':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Bishop("Black", Position, B_Bishop);
+                        Values = Counter(Values);
+                        break;
+                    case 'n':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Knight("Black", Position, B_Knight);
+                        Values = Counter(Values);
+                        break;
+                    case 'k':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new King("Black", Position, B_King);
+                        Values = Counter(Values);
+                        break;
+                    case 'q':
+                        Position = new int[2] { Values[3], Values[2] };
+                        AllPieces[Values[1]] = new Queen("Black", Position, B_Queen);
+                        Values = Counter(Values);
+                        break;
+                    case '/':
                         Values[0]++;
-                    }
-                    else
-                    {
-                        Values[1]++;
-                        Values[0]++;
-                        Values[3]++;
-                    }
-                    break;
+                        Values[2]--;
+                        Values[3] = Left;
+                        break;
+                    default:
+                        if (char.IsNumber(BoardNotation, Values[0]))
+                        {
+                            Values[3] = Values[3] + int.Parse(BoardNotation[Values[0]].ToString());
+                            Values[0]++;
+                        }
+                        else
+                        {
+                            Values[1]++;
+                            Values[0]++;
+                            Values[3]++;
+                        }
+                        break;
                 }
             }
             else
             {
-                switch(BoardNotation[Values[0]+1])
+                switch (BoardNotation[Values[0]])
                 {
                     case 'w':
                         PlayerToMove = "White";
@@ -366,42 +365,42 @@ public class MainCode : MonoBehaviour
                     default:
                         break;
                 }
-                for(int i = 3; i <=6; i++)
+                for (int i = 2; i <= 5; i++)
                 {
                     char Letter = ' ';
-                    switch(i)
+                    switch (i)
                     {
-                        case 3:
+                        case 2:
                             Letter = 'K';
                             break;
-                        case 4:
+                        case 3:
                             Letter = 'Q';
                             break;
-                        case 5:
+                        case 4:
                             Letter = 'k';
                             break;
-                        case 6:
+                        case 5:
                             Letter = 'q';
                             break;
                         default:
                             break;
                     }
-                    if(BoardNotation[Values[0]+i] == Letter)
+                    if (BoardNotation[Values[0] + i] == Letter)
                     {
-                        King.CastlingOptions[i-3] = true;
+                        King.CastlingOptions[i - 2] = true;
                     }
                 }
-                if(BoardNotation[Values[0]+7] != '-')
+                if (BoardNotation[Values[0] + 7] != '-')
                 {
-                    Pawn.EnPassantSquare[0] = Left + BoardToInt[BoardNotation[Values[0]+7]];
-                    Pawn.EnPassantSquare[1] = Bottom + BoardNotation[Values[0]+8];
-                    DrawMoveCount += BoardNotation[Values[0]+10];
-                    MoveCount += BoardNotation[Values[0]+12];
+                    Pawn.EnPassantSquare[0] = Left + BoardToInt[BoardNotation[Values[0] + 7]];
+                    Pawn.EnPassantSquare[1] = Bottom + BoardNotation[Values[0] + 8];
+                    DrawMoveCount += BoardNotation[Values[0] + 10];
+                    MoveCount += BoardNotation[Values[0] + 12];
                 }
                 else
                 {
-                    DrawMoveCount += BoardNotation[Values[0]+9];
-                    MoveCount += BoardNotation[Values[0]+11];
+                    DrawMoveCount += BoardNotation[Values[0] + 9];
+                    MoveCount += BoardNotation[Values[0] + 11];
                 }
                 IsBoardSetup = true;
             }
@@ -451,7 +450,7 @@ public class MainCode : MonoBehaviour
                 MoveAPiece(false);
             }
             // Checking if the piece is the same and saving that piece as the new piece
-            else if (ChessPiecesTilemap.GetTile(cellPosNew) != null  && PlayerToMove == AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].Colour)
+            else if (ChessPiecesTilemap.GetTile(cellPosNew) != null && PlayerToMove == AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].Colour)
             {
                 NewPieceSelected();
             }

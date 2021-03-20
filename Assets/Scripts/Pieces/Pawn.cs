@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Pawn : Pieces
@@ -11,41 +8,41 @@ public class Pawn : Pieces
     {
         // Logic for a pawn movement
         int Side;
-        bool[] BoolCellPos;
+        bool BoolCellPos;
         switch (this.Colour)
         {
             case "White":
-                BoolCellPos = new bool[2] { CheckCellPos("Up", 1), CheckCellPos("Up", 2) };
+                BoolCellPos = CheckCellPos("Up", 2);
                 Side = 1;
                 break;
             case "Black":
-                BoolCellPos = new bool[2] { CheckCellPos("Down", 1), CheckCellPos("Down", 2) };
+                BoolCellPos = CheckCellPos("Down", 2);
                 Side = -1;
                 break;
             default:
-                BoolCellPos = new bool[2] { false, false };
+                BoolCellPos = false;
                 Side = 0;
                 break;
         }
         (bool, bool) Checker = CheckIfBlocked(0, Side);
-        if(BoolCellPos[0] && Checker.Item1)
+        if (Checker.Item1)
         {
-            PlaceShowMoves(0, Side);
-            Checker = CheckIfBlocked(0, Side*2);
-            if (BoolCellPos[1] && Checker.Item1 && this.Position[1] == (2.5*Side*-1-0.5))
+            Checker = CheckIfBlocked(0, 2 * Side);
+            if (Checker.Item1 && (this.Position[1] == Top - 1 || this.Position[1] == Bottom + 1) && BoolCellPos)
             {
-                PlaceShowMoves(0, Side * 2);
+                PlaceShowMoves(0, 2 * Side);
             }
+            PlaceShowMoves(0, Side);
         }
-        Checker = CheckIfBlocked(1, Side);
-        if(BoolCellPos[0] && Checker.Item2)
+        Checker = CheckIfBlocked(Side, Side);
+        if (Checker.Item2)
         {
-            PlaceShowMoves(1, Side);
+            PlaceShowMoves(Side, Side);
         }
-        Checker = CheckIfBlocked(-1, Side);
-        if(BoolCellPos[0] && Checker.Item2)
+        Checker = CheckIfBlocked(-Side, Side);
+        if (Checker.Item2)
         {
-            PlaceShowMoves(-1, Side);
+            PlaceShowMoves(-Side, Side);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -71,7 +69,7 @@ public abstract class Pieces
         bool BoolOne = ChessPiecesTilemap.GetTile(testPiecePos) == null;
         if (!BoolOne)
         {
-            bool BoolTwo = ChessPiecesTilemap.GetTile(testPiecePos).name.Substring(0,5) != this.Colour;
+            bool BoolTwo = ChessPiecesTilemap.GetTile(testPiecePos).name.Substring(0, 5) != this.Colour;
             Output = (BoolOne, BoolTwo);
         }
         else
@@ -82,33 +80,4 @@ public abstract class Pieces
     }
 
     public abstract void Move();
-    ////Returns the tile
-    //public TileBase GetTile()
-    //{
-    //    return this.Tile;
-    //}
-
-    ////Returns the positions of the piece
-    //public int[] GetPosition()
-    //{
-    //    return this.Position;
-    //}
-
-    ////Changes the position
-    //public void SetPosition(int[] NewPosition)
-    //{
-    //    this.Position = NewPosition;
-    //}
-
-    ////Returns piece type
-    //public string GetPieceType()
-    //{
-    //    return this.Type;
-    //}
-
-    ////Returns Piece Colour
-    //public string GetColour()
-    //{
-    //    return this.Colour;
-    //}
 }
