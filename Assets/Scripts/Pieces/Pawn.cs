@@ -34,15 +34,18 @@ public class Pawn : Pieces
             }
             PlaceShowMoves(0, Side);
         }
-        Checker = CheckIfBlocked(Side, Side);
-        if (Checker.Item2)
+        for (int i = -1; i <= 1; i + 2)
         {
-            PlaceShowMoves(Side, Side);
-        }
-        Checker = CheckIfBlocked(-Side, Side);
-        if (Checker.Item2)
-        {
-            PlaceShowMoves(-Side, Side);
+            Checker = CheckIfBlocked(i, Side);
+            if (Checker.Item2)
+            {
+                PlaceShowMoves(i, Side);
+            }
+            Checker = CheckIfBlocked(i * 2, Side);
+            if (Checker.Item2 && EnPassantSquare[0] == this.Position[0] + i && EnPassantSquare[1] == this.Position[1] + Side)
+            {
+                PlaceShowMoves(i, Side)
+            }
         }
     }
 }
