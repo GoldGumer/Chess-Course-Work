@@ -19,5 +19,21 @@ public class King : Pieces
                 }
             }
         }
+        int Side;
+        switch(this.Colour)
+        {
+            case "White":
+                Side = 0
+                break;
+            case "Black":
+                Side = 2
+                break;
+            case default:
+                Side = null;
+                break;
+        }
+        if (CastlingOptions[Side] || CastlingOptions[Side + 1])
+        {
+        }
     }
 }
