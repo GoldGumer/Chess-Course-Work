@@ -224,7 +224,6 @@ public class MainCode : MonoBehaviour
             }
             for (int i = -1; i <= 1; i = i + 2)
             {
-                Debug.Log(cellPosLast.y == cellPosNew.y + i * 2);
                 if (cellPosLast.y == cellPosNew.y + i * 2)
                 {
                     Pawn.EnPassantSquare = new int[2] { cellPosNew.x, cellPosNew.y + i };
@@ -234,6 +233,7 @@ public class MainCode : MonoBehaviour
         }
         movingPiece = null;
         ChessPiecesTilemap.SetTile(cellPosLast, null);
+        Debug.Log(Pawn.EnPassantSquare);
         PlayerTurn();
     }
 
