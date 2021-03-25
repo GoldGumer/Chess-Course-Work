@@ -135,16 +135,9 @@ public class MainCode : MonoBehaviour
         movingPiece.Move();
     }
 
-    // Code for taking the piece at the new cell position and replacing it with the last piece saved
-    private void MoveAPiece(bool Taking)
+    // Code for setting castling options false
+    private void CheckCastling()
     {
-        RemoveShowMoves();
-        ChessPiecesTilemap.SetTile(cellPosNew, ChessPiecesTilemap.GetTile(cellPosLast));
-        if (Taking)
-        {
-            AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })] = null;
-            MoveCount = 0;
-        }
         if (movingPiece.Type == "King")
         {
             if (movingPiece.Colour == "White")
@@ -183,17 +176,11 @@ public class MainCode : MonoBehaviour
                 }
             }
         }
-        AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].Position = new int[2] { cellPosNew.x, cellPosNew.y };
-        if (movingPiece.Type == "Pawn")
-        {
-            if (movingPiece.Position[1] == Top || movingPiece.Position[1] == Bottom)
-            {
-                Promotion(movingPiece, FindPosInArr(new int[2] { movingPiece.Position[1], movingPiece.Position[1] }), "Queen");
-            }
-            MoveCount = 0;
-        }
-        movingPiece = null;
-        ChessPiecesTilemap.SetTile(cellPosLast, null);
+    }
+
+    // Code that changes the turn order
+    private void PlayerTurn()
+    {
         switch (PlayerToMove)
         {
             case "White":
@@ -206,6 +193,48 @@ public class MainCode : MonoBehaviour
                 break;
         }
         MoveCount = MoveCount + 0.5;
+    }
+
+    // Code for taking the piece at the new cell position and replacing it with the last piece saved
+    private void MoveAPiece()
+    {
+        RemoveShowMoves();
+        if (ChessPiecesTilemap.GetTile(cellPosNew) != null)
+        {
+            AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })] = null;
+            MoveCount = 0;
+        }
+        CheckCastling();
+        ChessPiecesTilemap.SetTile(cellPosNew, ChessPiecesTilemap.GetTile(cellPosLast));
+        AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].Position = new int[2] { cellPosNew.x, cellPosNew.y };
+        Debug.Log(Pawn.EnPassantSquare == new int[2] { cellPosNew.x, cellPosNew.y });
+        if (movingPiece.Type == "Pawn")
+        {
+            if (Pawn.EnPassantSquare == new int[2] { cellPosNew.x, cellPosNew.y } && movingPiece.Colour == "White")
+            {
+                AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y + 1 })] = null;
+            }
+            else if (Pawn.EnPassantSquare == new int[2] { cellPosNew.x, cellPosNew.y } && movingPiece.Colour == "Black")
+            {
+                AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y - 1 })] = null;
+            }
+            else if (movingPiece.Position[1] == Top || movingPiece.Position[1] == Bottom)
+            {
+                Promotion(movingPiece, FindPosInArr(new int[2] { movingPiece.Position[1], movingPiece.Position[1] }), "Queen");
+            }
+            for (int i = -1; i <= 1; i = i + 2)
+            {
+                Debug.Log(cellPosLast.y == cellPosNew.y + i * 2);
+                if (cellPosLast.y == cellPosNew.y + i * 2)
+                {
+                    Pawn.EnPassantSquare = new int[2] { cellPosNew.x, cellPosNew.y + i };
+                }
+            }
+            MoveCount = 0;
+        }
+        movingPiece = null;
+        ChessPiecesTilemap.SetTile(cellPosLast, null);
+        PlayerTurn();
     }
 
     //Sets up the Chessboard Tilemap with the appropriate theme
@@ -445,19 +474,14 @@ public class MainCode : MonoBehaviour
                 NewPieceSelected();
             }
             // When the piece is moving to a legal place and there is a piece being saved
-            else if (ChessPiecesTilemap.GetTile(cellPosNew) == null && movingPiece != null && ShowMovesTilemap.GetTile(cellPosNew) == ShowMove)
+            else if (movingPiece != null && ShowMovesTilemap.GetTile(cellPosNew) == ShowMove)
             {
-                MoveAPiece(false);
+                MoveAPiece();
             }
             // Checking if the piece is the same and saving that piece as the new piece
             else if (ChessPiecesTilemap.GetTile(cellPosNew) != null && PlayerToMove == AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].Colour)
             {
                 NewPieceSelected();
-            }
-            // Checking if the piece is the opponents piece and taking it
-            else if (ChessPiecesTilemap.GetTile(cellPosNew) != null && PlayerToMove != AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y })].Colour && ShowMovesTilemap.GetTile(cellPosNew) == ShowMove)
-            {
-                MoveAPiece(true);
             }
         }
     }

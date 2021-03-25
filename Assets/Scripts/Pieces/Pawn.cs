@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Pawn : Pieces
@@ -34,17 +35,17 @@ public class Pawn : Pieces
             }
             PlaceShowMoves(0, Side);
         }
-        for (int i = -1; i <= 1; i + 2)
+        for (int i = -1; i <= 1; i = i + 2)
         {
             Checker = CheckIfBlocked(i, Side);
             if (Checker.Item2)
             {
                 PlaceShowMoves(i, Side);
             }
-            Checker = CheckIfBlocked(i * 2, Side);
+            Checker = CheckIfBlocked(i, 0);
             if (Checker.Item2 && EnPassantSquare[0] == this.Position[0] + i && EnPassantSquare[1] == this.Position[1] + Side)
             {
-                PlaceShowMoves(i, Side)
+                PlaceShowMoves(i, Side);
             }
         }
     }

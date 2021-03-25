@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class King : Pieces
@@ -23,17 +24,25 @@ public class King : Pieces
         switch(this.Colour)
         {
             case "White":
-                Side = 0
+                Side = 0;
                 break;
             case "Black":
-                Side = 2
+                Side = 2;
                 break;
-            case default:
-                Side = null;
+            default:
+                Side = 10000;
                 break;
         }
-        if (CastlingOptions[Side] || CastlingOptions[Side + 1])
+        if (CastlingOptions[Side])
         {
+            if(ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] + 1, this.Position[1], 0)) && ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] + 2, this.Position[1], 0)))
+            {
+
+            }
+        }
+        if (CastlingOptions[Side + 1])
+        {
+
         }
     }
 }
