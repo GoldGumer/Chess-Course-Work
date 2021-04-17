@@ -21,8 +21,7 @@ public abstract class Pieces
         this.Colour = GivenColour;
         this.Position = StartingPosition;
         this.Tile = GivenTile;
-        Vector3Int VectorPos = new Vector3Int(this.Position[0], this.Position[1], 0);
-        ChessPiecesTilemap.SetTile(VectorPos, this.Tile);
+        ChessPiecesTilemap.SetTile(new Vector3Int(this.Position[0], this.Position[1], 0), this.Tile);
     }
 
     //Code for Placing 'ShowMove' tiles

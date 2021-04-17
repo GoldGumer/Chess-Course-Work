@@ -7,7 +7,7 @@ public class MainCode : MonoBehaviour
     private Pieces movingPiece;
     private Vector3Int cellPosNew;
     private Vector3Int cellPosLast;
-    private string BoardNotation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+    private string BoardNotation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/R3K2R w KQkq - 0 1";
     private Pieces[] AllPieces = new Pieces[64];
     private int Top = 8;
     private int Bottom = 1;
@@ -138,43 +138,46 @@ public class MainCode : MonoBehaviour
     // Code for setting castling options false
     private void CheckCastling()
     {
-        if (movingPiece.Type == "King")
+        switch (movingPiece.Type)
         {
-            if (movingPiece.Colour == "White")
-            {
-                King.CastlingOptions[0] = false;
-                King.CastlingOptions[1] = false;
-            }
-            else if (movingPiece.Colour == "Black")
-            {
-                King.CastlingOptions[2] = false;
-                King.CastlingOptions[3] = false;
-            }
-        }
-        else if (movingPiece.Type == "Rook")
-        {
-            if (movingPiece.Colour == "White")
-            {
-                if (movingPiece.Position[0] == Right)
+            case "King":
+                if (movingPiece.Colour == "White")
                 {
                     King.CastlingOptions[0] = false;
-                }
-                else if (movingPiece.Position[0] == Left)
-                {
                     King.CastlingOptions[1] = false;
                 }
-            }
-            else if (movingPiece.Colour == "Black")
-            {
-                if (movingPiece.Position[0] == Right)
+                else if (movingPiece.Colour == "Black")
                 {
                     King.CastlingOptions[2] = false;
-                }
-                else if (movingPiece.Position[0] == Left)
-                {
                     King.CastlingOptions[3] = false;
                 }
-            }
+                break;
+            case "Rook":
+                if (movingPiece.Colour == "White")
+                {
+                    if (movingPiece.Position[0] == Right)
+                    {
+                        King.CastlingOptions[0] = false;
+                    }
+                    else if (movingPiece.Position[0] == Left)
+                    {
+                        King.CastlingOptions[1] = false;
+                    }
+                }
+                else if (movingPiece.Colour == "Black")
+                {
+                    if (movingPiece.Position[0] == Right)
+                    {
+                        King.CastlingOptions[2] = false;
+                    }
+                    else if (movingPiece.Position[0] == Left)
+                    {
+                        King.CastlingOptions[3] = false;
+                    }
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -207,33 +210,71 @@ public class MainCode : MonoBehaviour
         CheckCastling();
         ChessPiecesTilemap.SetTile(cellPosNew, ChessPiecesTilemap.GetTile(cellPosLast));
         AllPieces[FindPosInArr(new int[2] { cellPosLast.x, cellPosLast.y })].Position = new int[2] { cellPosNew.x, cellPosNew.y };
-        Debug.Log(Pawn.EnPassantSquare == new int[2] { cellPosNew.x, cellPosNew.y });
         if (movingPiece.Type == "Pawn")
         {
-            if (Pawn.EnPassantSquare == new int[2] { cellPosNew.x, cellPosNew.y } && movingPiece.Colour == "White")
-            {
-                AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y + 1 })] = null;
-            }
-            else if (Pawn.EnPassantSquare == new int[2] { cellPosNew.x, cellPosNew.y } && movingPiece.Colour == "Black")
+            if (Pawn.EnPassantSquare[0] == cellPosNew.x && Pawn.EnPassantSquare[1] == cellPosNew.y && movingPiece.Colour == "White")
             {
                 AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y - 1 })] = null;
+                ChessPiecesTilemap.SetTile(new Vector3Int(cellPosNew.x, cellPosNew.y - 1, cellPosNew.z), null);
+            }
+            else if (Pawn.EnPassantSquare[0] == cellPosNew.x && Pawn.EnPassantSquare[1] == cellPosNew.y && movingPiece.Colour == "Black")
+            {
+                AllPieces[FindPosInArr(new int[2] { cellPosNew.x, cellPosNew.y + 1 })] = null;
+                ChessPiecesTilemap.SetTile(new Vector3Int(cellPosNew.x, cellPosNew.y + 1, cellPosNew.z), null);
             }
             else if (movingPiece.Position[1] == Top || movingPiece.Position[1] == Bottom)
             {
                 Promotion(movingPiece, FindPosInArr(new int[2] { movingPiece.Position[1], movingPiece.Position[1] }), "Queen");
             }
-            for (int i = -1; i <= 1; i = i + 2)
+            for (int i = -1; i <= 1; i += 2)
             {
                 if (cellPosLast.y == cellPosNew.y + i * 2)
                 {
                     Pawn.EnPassantSquare = new int[2] { cellPosNew.x, cellPosNew.y + i };
+                    break;
+                }
+                else
+                {
+                    Pawn.EnPassantSquare = new int[2] { 0, 0 };
                 }
             }
             MoveCount = 0;
         }
+        else if (movingPiece.Type == "King")
+        {
+            for (int i = -1; i <= 1; i += 2)
+            {
+                if (cellPosLast.x == cellPosNew.x + i * 2)
+                {
+                    int PositionInArray = 0;
+                    switch (i)
+                    {
+                        case -1:
+                            PositionInArray = FindPosInArr(new int[2] { 1, cellPosNew.y });
+                            ChessPiecesTilemap.SetTile(new Vector3Int(1, cellPosNew.y, cellPosNew.z), null);
+                            break;
+                        case 1:
+                            PositionInArray = FindPosInArr(new int[2] { 8, cellPosNew.y });
+                            ChessPiecesTilemap.SetTile(new Vector3Int(8, cellPosNew.y, cellPosNew.z), null);
+                            break;
+                        default:
+                            break;
+                    }
+                    AllPieces[PositionInArray].Position = new int[2] { cellPosNew.x + i, cellPosNew.y };
+                    if (movingPiece.Colour == "White")
+                    {
+                        ChessPiecesTilemap.SetTile(new Vector3Int(cellPosNew.x + i, cellPosNew.y, cellPosNew.z), W_Rook);
+                    }
+                    else
+                    {
+                        ChessPiecesTilemap.SetTile(new Vector3Int(cellPosNew.x + i, cellPosNew.y, cellPosNew.z), B_Rook);
+                    }
+                    break;
+                }
+            }
+        }
         movingPiece = null;
         ChessPiecesTilemap.SetTile(cellPosLast, null);
-        Debug.Log(Pawn.EnPassantSquare);
         PlayerTurn();
     }
 
@@ -421,8 +462,9 @@ public class MainCode : MonoBehaviour
                 }
                 if (BoardNotation[Values[0] + 7] != '-')
                 {
-                    Pawn.EnPassantSquare[0] = Left + BoardToInt[BoardNotation[Values[0] + 7]];
-                    Pawn.EnPassantSquare[1] = Bottom + BoardNotation[Values[0] + 8];
+                    Pawn.EnPassantSquare = new int[2] { Left + BoardToInt[BoardNotation[Values[0] + 7]], int.Parse(BoardNotation[Values[0] + 8].ToString()) };
+                    Debug.Log(Pawn.EnPassantSquare[0]);
+                    Debug.Log(Pawn.EnPassantSquare[1]);
                     DrawMoveCount += BoardNotation[Values[0] + 10];
                     MoveCount += BoardNotation[Values[0] + 12];
                 }

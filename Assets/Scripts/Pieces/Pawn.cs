@@ -35,7 +35,7 @@ public class Pawn : Pieces
             }
             PlaceShowMoves(0, Side);
         }
-        for (int i = -1; i <= 1; i = i + 2)
+        for (int i = -1; i <= 1; i += 2)
         {
             Checker = CheckIfBlocked(i, Side);
             if (Checker.Item2)

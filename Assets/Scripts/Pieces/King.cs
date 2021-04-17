@@ -26,23 +26,23 @@ public class King : Pieces
             case "White":
                 Side = 0;
                 break;
-            case "Black":
-                Side = 2;
-                break;
             default:
-                Side = 10000;
+                Side = 2;
                 break;
         }
         if (CastlingOptions[Side])
         {
-            if(ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] + 1, this.Position[1], 0)) && ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] + 2, this.Position[1], 0)))
+            if (ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] + 1, this.Position[1], 0)) == null && ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] + 2, this.Position[1], 0)) == null)
             {
-
+                PlaceShowMoves(2, 0);
             }
         }
         if (CastlingOptions[Side + 1])
         {
-
+            if (ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] -1, this.Position[1], 0)) == null && ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] - 2, this.Position[1], 0)) == null && ChessPiecesTilemap.GetTile(new Vector3Int(this.Position[0] - 3, this.Position[1], 0)) == null)
+            {
+                PlaceShowMoves(-2, 0);
+            }
         }
     }
 }
