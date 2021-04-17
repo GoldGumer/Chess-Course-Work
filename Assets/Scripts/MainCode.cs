@@ -7,7 +7,7 @@ public class MainCode : MonoBehaviour
     private Pieces movingPiece;
     private Vector3Int cellPosNew;
     private Vector3Int cellPosLast;
-    private string BoardNotation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/R3K2R w KQkq - 0 1";
+    private string BoardNotation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
     private Pieces[] AllPieces = new Pieces[64];
     private int Top = 8;
     private int Bottom = 1;
@@ -246,16 +246,16 @@ public class MainCode : MonoBehaviour
             {
                 if (cellPosLast.x == cellPosNew.x + i * 2)
                 {
-                    int PositionInArray = 0;
+                    int PositionInArray = -1;
                     switch (i)
                     {
                         case -1:
-                            PositionInArray = FindPosInArr(new int[2] { 1, cellPosNew.y });
-                            ChessPiecesTilemap.SetTile(new Vector3Int(1, cellPosNew.y, cellPosNew.z), null);
-                            break;
-                        case 1:
                             PositionInArray = FindPosInArr(new int[2] { 8, cellPosNew.y });
                             ChessPiecesTilemap.SetTile(new Vector3Int(8, cellPosNew.y, cellPosNew.z), null);
+                            break;
+                        case 1:
+                            PositionInArray = FindPosInArr(new int[2] { 1, cellPosNew.y });
+                            ChessPiecesTilemap.SetTile(new Vector3Int(1, cellPosNew.y, cellPosNew.z), null);
                             break;
                         default:
                             break;
