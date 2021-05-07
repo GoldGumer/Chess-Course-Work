@@ -1,0 +1,766 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -530159753, guid: 68c7e4565cde54155bb78d8e935f1ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cacheType: 3
+  lastUpdatedAtString: 2021-05-07T10:19:35.106+01:00
+  initializedAtString: 2021-05-07T10:19:35.104+01:00
+  log:
+  - commitID: cde3ce698d3b34f2ab173d4dbb375c05370ec0b4
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: Added New scene
+    description: 
+    timeString: 2021-05-07T10:02:10.000+01:00
+    commitTimeString: 2021-05-07T10:02:10.000+01:00
+    changes:
+    - path: Assets\Scenes\Game Scene.unity
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scenes\Game Scene.unity
+      projectPath: Assets\Scenes\Game Scene.unity
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scenes\Main Menu Scene.unity
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scenes\Main Menu Scene.unity
+      projectPath: Assets\Scenes\Main Menu Scene.unity
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+  - commitID: ae77188f017f0dd858a22e32d9157739897f21e8
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: Castling Finished
+    description: 
+    timeString: 2021-04-17T09:56:13.000+01:00
+    commitTimeString: 2021-04-17T09:56:13.000+01:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 148fda189d1426181eda9c3bd8956ce198c75be3
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: Enpassant and a little castling
+    description: 
+    timeString: 2021-04-17T09:50:33.000+01:00
+    commitTimeString: 2021-04-17T09:50:33.000+01:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\King.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\King.cs
+      projectPath: Assets\Scripts\Pieces\King.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pawn.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pawn.cs
+      projectPath: Assets\Scripts\Pieces\Pawn.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pieces.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pieces.cs
+      projectPath: Assets\Scripts\Pieces\Pieces.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: d77bd84e208394d7abf63fc0468222045775ebb1
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: added debug
+    description: 
+    timeString: 2021-03-25T13:58:08.000+00:00
+    commitTimeString: 2021-03-25T13:58:08.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 271b44ed0c43b75792d13476f591f3a57e9b7c90
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: En passant
+    description: 
+    timeString: 2021-03-25T01:42:16.000+00:00
+    commitTimeString: 2021-03-25T01:42:16.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\King.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\King.cs
+      projectPath: Assets\Scripts\Pieces\King.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pawn.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pawn.cs
+      projectPath: Assets\Scripts\Pieces\Pawn.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 1f9fa62c6cb6874fe927d2d5644913a1fc95b254
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: ' halfway through castling implementation'
+    description: 
+    timeString: 2021-03-24T12:53:42.000+00:00
+    commitTimeString: 2021-03-24T12:53:42.000+00:00
+    changes:
+    - path: Assets\Scripts\Pieces\King.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\King.cs
+      projectPath: Assets\Scripts\Pieces\King.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 6ec54f99248272270abb6a1f42d08ddadb043180
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: Added enpassanting
+    description: 
+    timeString: 2021-03-24T12:48:13.000+00:00
+    commitTimeString: 2021-03-24T12:48:13.000+00:00
+    changes:
+    - path: Assets\Scripts\Pieces\Pawn.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pawn.cs
+      projectPath: Assets\Scripts\Pieces\Pawn.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 394c62756a7701753d5832d24e876549e9352151
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: Most changes are in Pawn,MainCode
+    description: 
+    timeString: 2021-03-20T01:45:23.000+00:00
+    commitTimeString: 2021-03-20T01:45:23.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Bishop.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Bishop.cs
+      projectPath: Assets\Scripts\Pieces\Bishop.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\King.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\King.cs
+      projectPath: Assets\Scripts\Pieces\King.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Knight.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Knight.cs
+      projectPath: Assets\Scripts\Pieces\Knight.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pawn.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pawn.cs
+      projectPath: Assets\Scripts\Pieces\Pawn.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pieces.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pieces.cs
+      projectPath: Assets\Scripts\Pieces\Pieces.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Queen.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Queen.cs
+      projectPath: Assets\Scripts\Pieces\Queen.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Rook.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Rook.cs
+      projectPath: Assets\Scripts\Pieces\Rook.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 1067814895f9703ff403521db918179148a63907
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: Made so Castling can be lost
+    description: 
+    timeString: 2021-03-20T00:39:48.000+00:00
+    commitTimeString: 2021-03-20T00:39:48.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 015723a157bedf7b2d9e2eea05c6b4b5c94d4a50
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: Added static variables
+    description: 
+    timeString: 2021-03-20T00:23:41.000+00:00
+    commitTimeString: 2021-03-20T00:23:41.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Bishop.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Bishop.cs
+      projectPath: Assets\Scripts\Pieces\Bishop.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\King.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\King.cs
+      projectPath: Assets\Scripts\Pieces\King.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Knight.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Knight.cs
+      projectPath: Assets\Scripts\Pieces\Knight.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pawn.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pawn.cs
+      projectPath: Assets\Scripts\Pieces\Pawn.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pieces.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pieces.cs
+      projectPath: Assets\Scripts\Pieces\Pieces.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Queen.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Queen.cs
+      projectPath: Assets\Scripts\Pieces\Queen.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Rook.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Rook.cs
+      projectPath: Assets\Scripts\Pieces\Rook.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 5e931ae70c0f0dac634e0989b2b057b485db3e5a
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: Made static changes
+    description: 
+    timeString: 2021-03-19T18:35:45.000+00:00
+    commitTimeString: 2021-03-19T18:35:45.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\King.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\King.cs
+      projectPath: Assets\Scripts\Pieces\King.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pawn.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pawn.cs
+      projectPath: Assets\Scripts\Pieces\Pawn.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pieces.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pieces.cs
+      projectPath: Assets\Scripts\Pieces\Pieces.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: a4536b543876ff86ec1012a2e3e2669e02e15eba
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: Removed Tile
+    description: 
+    timeString: 2021-03-19T14:34:05.000+00:00
+    commitTimeString: 2021-03-19T14:34:05.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 2e47326a50563539bc809fe320d3fc68558000fd
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: fixed up some lines
+    description: 
+    timeString: 2021-03-19T13:35:42.000+00:00
+    commitTimeString: 2021-03-19T13:35:42.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 7f7a229d6b0ece71bbb876e70429a2ca39e64c95
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: Completed "ReadFEN"
+    description: 
+    timeString: 2021-03-19T13:14:10.000+00:00
+    commitTimeString: 2021-03-19T13:14:10.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: e9b711011abe433423715a47591ea47390d02908
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: updated "ReadFEN"
+    description: 'added Dictionary
+
+      added CastlingOptions
+
+      added EnPassantSquare'
+    timeString: 2021-03-19T12:48:23.000+00:00
+    commitTimeString: 2021-03-19T12:48:23.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 95080b8fff0e065d4b6fcdf83aebd821f5c81060
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: updated NewPieceSelected
+    description: made PlayerToMove change in a switch stattement
+    timeString: 2021-03-19T12:03:52.000+00:00
+    commitTimeString: 2021-03-19T12:03:52.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 08b73b7b3197dd202fc0a54d6d91d1747c7fae2c
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: 65403152+GoldGumer@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: Added to "ReadFEN"
+    description: So now it can read in who's turn it is.
+    timeString: 2021-03-19T11:56:45.000+00:00
+    commitTimeString: 2021-03-19T11:56:45.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+  - commitID: 884a6cfa913394223e6e8c1fd8c022417e20e7a9
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: test 2
+    description: 
+    timeString: 2021-03-17T14:41:33.000+00:00
+    commitTimeString: 2021-03-17T14:41:33.000+00:00
+    changes:
+    - path: Assembly-CSharp.csproj
+      fullPath: D:\Unity Projects\Chess Course Work\Assembly-CSharp.csproj
+      projectPath: Assembly-CSharp.csproj
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Chess Course Work.sln
+      fullPath: D:\Unity Projects\Chess Course Work\Chess Course Work.sln
+      projectPath: Chess Course Work.sln
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+  - commitID: 0dccda07573f3ec4540fa07ba8d53abc582e512c
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: test
+    description: 
+    timeString: 2021-03-17T14:41:02.000+00:00
+    commitTimeString: 2021-03-17T14:41:02.000+00:00
+    changes:
+    - path: Assets\Chess Tileset.png
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Chess Tileset.png
+      projectPath: Assets\Chess Tileset.png
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Grid.prefab
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Grid.prefab
+      projectPath: Assets\Grid.prefab
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Chess Pieces.prefab
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Chess Pieces.prefab
+      projectPath: Assets\Palettes\Chess Pieces.prefab
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Etc_\Show_Move.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Etc_\Show_Move.asset
+      projectPath: Assets\Palettes\Etc_\Show_Move.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Game Board.prefab
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Game Board.prefab
+      projectPath: Assets\Palettes\Game Board.prefab
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\Black_Bishop.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\Black_Bishop.asset
+      projectPath: Assets\Palettes\Pieces\Black_Bishop.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\Black_King.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\Black_King.asset
+      projectPath: Assets\Palettes\Pieces\Black_King.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\Black_Knight.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\Black_Knight.asset
+      projectPath: Assets\Palettes\Pieces\Black_Knight.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\Black_Pawn.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\Black_Pawn.asset
+      projectPath: Assets\Palettes\Pieces\Black_Pawn.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\Black_Queen.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\Black_Queen.asset
+      projectPath: Assets\Palettes\Pieces\Black_Queen.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\Black_Rook.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\Black_Rook.asset
+      projectPath: Assets\Palettes\Pieces\Black_Rook.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\White_Bishop.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\White_Bishop.asset
+      projectPath: Assets\Palettes\Pieces\White_Bishop.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\White_King.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\White_King.asset
+      projectPath: Assets\Palettes\Pieces\White_King.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\White_Knight.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\White_Knight.asset
+      projectPath: Assets\Palettes\Pieces\White_Knight.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\White_Pawn.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\White_Pawn.asset
+      projectPath: Assets\Palettes\Pieces\White_Pawn.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\White_Queen.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\White_Queen.asset
+      projectPath: Assets\Palettes\Pieces\White_Queen.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Pieces\White_Rook.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Pieces\White_Rook.asset
+      projectPath: Assets\Palettes\Pieces\White_Rook.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Theme Tiles\Black_Dark.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Theme Tiles\Black_Dark.asset
+      projectPath: Assets\Palettes\Theme Tiles\Black_Dark.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Theme Tiles\Black_Light.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Theme Tiles\Black_Light.asset
+      projectPath: Assets\Palettes\Theme Tiles\Black_Light.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Theme Tiles\Brown_Dark.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Theme Tiles\Brown_Dark.asset
+      projectPath: Assets\Palettes\Theme Tiles\Brown_Dark.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Theme Tiles\Brown_Light.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Theme Tiles\Brown_Light.asset
+      projectPath: Assets\Palettes\Theme Tiles\Brown_Light.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Theme Tiles\Green_Dark.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Theme Tiles\Green_Dark.asset
+      projectPath: Assets\Palettes\Theme Tiles\Green_Dark.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Palettes\Theme Tiles\Green_Light.asset
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Palettes\Theme Tiles\Green_Light.asset
+      projectPath: Assets\Palettes\Theme Tiles\Green_Light.asset
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scenes\Game Scene.unity
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scenes\Game Scene.unity
+      projectPath: Assets\Scenes\Game Scene.unity
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\New File
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\New File
+      projectPath: Assets\Scripts\Pieces\New File
+      originalPath: 
+      indexStatus: 5
+      workTreeStatus: 0
+    - path: Assets\Tilemap_Gameboard.prefab
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Tilemap_Gameboard.prefab
+      projectPath: Assets\Tilemap_Gameboard.prefab
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Tilemap_NextMove.prefab
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Tilemap_NextMove.prefab
+      projectPath: Assets\Tilemap_NextMove.prefab
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Tilemap_Pieces.prefab
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Tilemap_Pieces.prefab
+      projectPath: Assets\Tilemap_Pieces.prefab
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\chess pieces.png
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\chess pieces.png
+      projectPath: Assets\chess pieces.png
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+  - commitID: 62053cb3a041b3d0203038a8036aa6aed4cf7967
+    mergeA: 
+    mergeB: 
+    authorName: GoldGumer
+    authorEmail: ngonczol@gmail.com
+    commitEmail: ngonczol@gmail.com
+    commitName: GoldGumer
+    summary: test
+    description: 
+    timeString: 2021-03-17T14:38:13.000+00:00
+    commitTimeString: 2021-03-17T14:38:13.000+00:00
+    changes:
+    - path: Assets\Scripts\MainCode.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\MainCode.cs
+      projectPath: Assets\Scripts\MainCode.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Bishop.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Bishop.cs
+      projectPath: Assets\Scripts\Pieces\Bishop.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\King.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\King.cs
+      projectPath: Assets\Scripts\Pieces\King.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Knight.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Knight.cs
+      projectPath: Assets\Scripts\Pieces\Knight.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\New File
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\New File
+      projectPath: Assets\Scripts\Pieces\New File
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pawn.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pawn.cs
+      projectPath: Assets\Scripts\Pieces\Pawn.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Pieces.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Pieces.cs
+      projectPath: Assets\Scripts\Pieces\Pieces.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Queen.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Queen.cs
+      projectPath: Assets\Scripts\Pieces\Queen.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Pieces\Rook.cs
+      fullPath: D:\Unity Projects\Chess Course Work\Assets\Scripts\Pieces\Rook.cs
+      projectPath: Assets\Scripts\Pieces\Rook.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+  - commitID: 09c5917da34b33abb62eab476e2b433d0cb18ae3
+    mergeA: 
+    mergeB: 
+    authorName: Norbert
+    authorEmail: Norbert@DESKTOP-VPT5O80
+    commitEmail: Norbert@DESKTOP-VPT5O80
+    commitName: Norbert
+    summary: Add .gitignore and .gitattributes.
+    description: 
+    timeString: 2021-03-17T14:03:27.000+00:00
+    commitTimeString: 2021-03-17T14:03:27.000+00:00
+    changes:
+    - path: .gitattributes
+      fullPath: D:\Unity Projects\Chess Course Work\.gitattributes
+      projectPath: .gitattributes
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: .gitignore
+      fullPath: D:\Unity Projects\Chess Course Work\.gitignore
+      projectPath: .gitignore
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
